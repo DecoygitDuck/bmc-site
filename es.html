@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>Entrenamiento Personal en Miami | BMC Athlete</title>
+  <meta name="description" content="Entrenamiento personal 1 a 1 en Miami-Dade. Primera sesión gratis. Llama o agenda para recibir tu cotización." />
+<link rel="alternate" hreflang="en" href="https://bmcathlete.com/" />
+  <link rel="alternate" hreflang="es" href="https://bmcathlete.com/es.html" />
+
+  <style>
+    :root{
+  /* Dark fitness lifestyle palette */
+  --bg:#0f0f0f;
+  --bg2:#141414;
+  --panel:#1a1a1a;
+  --panel2:#222222;
+
+  --text:#f5f5f5;
+  --muted:#a3a3a3;
+  --border:rgba(255,255,255,.08);
+  --shadow:0 20px 50px rgba(0,0,0,.5);
+
+  /* Warm, inviting accent system */
+  --accent:#f97316;   /* warm coral orange - energetic but welcoming */
+  --accent2:#fb923c;  /* lighter orange for hover states */
+  --accent3:#22c55e;  /* fresh green - health/vitality */
+
+  --r12:12px;
+  --r16:16px;
+  --r22:22px;
+
+  --max:1120px;
+  --pad:20px;
+  --font: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+    *{box-sizing:border-box; margin:0; padding:0}
+    html,body{height:100%}
+    body{
+      font-family:var(--font);
+      color:var(--text);
+      line-height:1.6;
+      background: var(--bg);
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(249,115,22,.15), transparent),
+        radial-gradient(ellipse 60% 40% at 100% 50%, rgba(34,197,94,.05), transparent);
+      overflow-x:hidden;
+      min-height:100vh;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding: 18px var(--pad) 70px}
+    .sr{position:absolute; left:-9999px}
+
+    /* Header */
+    header{
+      position: sticky;
+      top: 16px;
+      z-index: 50;
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding: 14px 20px;
+      border:1px solid var(--border);
+      border-radius: var(--r22);
+      background: rgba(20,20,20,.85);
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow);
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width: 220px;
+    }
+    .logo{
+      width:50px;
+      height:50px;
+      object-fit:contain;
+      border-radius:12px;
+      display:block;
+    }
+
+    .hero-img{
+      width:100%;
+      max-width:480px;
+      margin-top:28px;
+      border-radius:16px;
+      box-shadow: 0 25px 80px rgba(249,115,22,.25), 0 10px 40px rgba(0,0,0,.5);
+    }
+
+    .mindset-img{
+      width:100%;
+      max-width:420px;
+      margin:32px auto 0;
+      display:block;
+      border-radius:16px;
+      box-shadow: 0 25px 80px rgba(249,115,22,.2), 0 10px 40px rgba(0,0,0,.5);
+    }
+
+    .mark{
+      width:42px; height:42px; border-radius:14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border:2px solid rgba(255,255,255,.15);
+      box-shadow: 0 8px 24px rgba(249,115,22,.4);
+    }
+    .brand .name{font-weight:800; letter-spacing:.5px; font-size: 16px; color: #fff}
+    .brand .tag{font-size: 12px; color: var(--accent); margin-top:3px; font-weight:500}
+
+    .navlinks{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .chip{
+      font-size:13px;
+      font-weight:500;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.05);
+      transition: all .2s ease;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .chip:hover{transform:translateY(-2px); background:rgba(249,115,22,.15); border-color:var(--accent); color:var(--accent)}
+
+    .btn{
+      font-size:14px;
+      font-weight:600;
+      padding: 12px 20px;
+      border-radius: 999px;
+      border: none;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      justify-content:center;
+      white-space:nowrap;
+      user-select:none;
+      cursor:pointer;
+      transition: all .2s ease;
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color:#fff;
+      box-shadow: 0 8px 30px rgba(249,115,22,.4);
+    }
+    .btn.primary:hover{transform:translateY(-2px) scale(1.02); box-shadow: 0 12px 40px rgba(249,115,22,.5)}
+    .btn.secondary{
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      color: var(--text);
+    }
+    .btn.secondary:hover{transform:translateY(-2px); background: rgba(255,255,255,.12); border-color:var(--accent)}
+
+    /* Cards */
+    .card{
+      border:1px solid rgba(255,255,255,.06);
+      background: var(--panel);
+      border-radius: var(--r22);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card:before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(ellipse 60% 40% at 0% 0%, rgba(249,115,22,.08), transparent),
+        radial-gradient(ellipse 50% 50% at 100% 100%, rgba(34,197,94,.04), transparent);
+      pointer-events:none;
+    }
+    .card > *{position:relative}
+
+    /* Hero */
+    .hero{
+      margin-top: 24px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 20px;
+      align-items:stretch;
+    }
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      border:1px solid rgba(249,115,22,.3);
+      background: rgba(249,115,22,.1);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 13px;
+      color: var(--accent);
+      font-weight:500;
+    }
+    .dot{width:10px; height:10px; border-radius: 999px; background: var(--accent3); box-shadow: 0 0 0 4px rgba(34,197,94,.2); animation: pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+    h1{
+      margin: 16px 0 12px;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      line-height: 1.1;
+      letter-spacing: -1px;
+      font-weight:800;
+    }
+    h1 span{color:var(--accent)}
+    .sub{
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 60ch;
+      line-height:1.7;
+    }
+    .actions{
+      margin-top: 20px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+    }
+    .pills{
+      margin-top: 20px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      color: var(--muted);
+      font-size:13px;
+    }
+    .pill{
+      border:1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.04);
+      padding: 10px 14px;
+      border-radius: 999px;
+      transition: all .2s ease;
+    }
+    .pill:hover{border-color:var(--accent); color:var(--accent)}
+
+    .sidegrid{display:grid; gap:14px}
+    .stat{
+      display:flex; gap:14px; align-items:flex-start;
+      padding: 16px;
+      border-radius: var(--r16);
+      border:1px solid rgba(255,255,255,.06);
+      background: rgba(255,255,255,.02);
+      transition: all .2s ease;
+    }
+    .stat:hover{border-color:rgba(249,115,22,.2); background:rgba(249,115,22,.05)}
+    .ic{
+      width:40px; height:40px; border-radius: 12px;
+      background: linear-gradient(135deg, rgba(249,115,22,.2), rgba(249,115,22,.1));
+      border:1px solid rgba(249,115,22,.3);
+      display:grid; place-items:center;
+      font-weight:900;
+      font-size:16px;
+      flex-shrink:0;
+    }
+    .stat h3{margin:0; font-size: 14px; font-weight:600; color:#fff}
+    .stat p{margin:5px 0 0; font-size:13px; color: var(--muted); line-height:1.5}
+
+    /* Sections */
+    section{margin-top: 24px}
+    .h2{font-size: 22px; font-weight:700; letter-spacing: -.3px; margin: 0 0 8px; color:#fff}
+    .lead{color: var(--muted); margin: 0 0 20px; font-size:15px}
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .grid2{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 940px){
+      header{position:relative; top:auto}
+      .hero{grid-template-columns: 1fr}
+      .grid3{grid-template-columns: 1fr}
+      .grid2{grid-template-columns: 1fr}
+      .brand{min-width:auto}
+      .hero-img, .mindset-img{max-width:100%}
+    }
+    @media (max-width: 640px){
+      .wrap{padding: 12px 16px 60px}
+      .nav{padding: 10px 14px; gap:10px; flex-wrap:wrap}
+      .navlinks{width:100%; justify-content:center; gap:8px}
+      .chip{padding:8px 12px; font-size:12px}
+      .btn{padding:10px 16px; font-size:13px}
+      .brand{width:100%; justify-content:center; min-width:auto}
+      .card{padding:20px}
+      h1{font-size:clamp(1.8rem, 6vw, 2.4rem)}
+      .sub{font-size:1rem}
+      .kicker{font-size:11px; padding:8px 12px}
+      .pills{gap:6px}
+      .pill{padding:8px 10px; font-size:11px}
+      .actions{gap:8px}
+      .stat{padding:12px}
+      .miniCard{padding:16px}
+      .h2{font-size:18px}
+      .lead{font-size:14px}
+    }
+
+    .miniCard{
+      border:1px solid rgba(255,255,255,.06);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--r16);
+      padding: 20px;
+      transition: all .2s ease;
+    }
+    .miniCard:hover{border-color:rgba(249,115,22,.2); background:rgba(249,115,22,.05); transform:translateY(-2px)}
+    .miniCard h3{font-size: 15px; font-weight:600; margin: 0 0 8px; color:#fff}
+    .miniCard p{color: var(--muted); font-size: 14px; margin: 0; line-height:1.6}
+
+    /* Form */
+    label{display:block; font-size:13px; font-weight:500; color: var(--muted); margin: 14px 0 8px}
+    input, select, textarea{
+      width:100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      font-size:15px;
+      outline:none;
+      transition: all .2s ease;
+    }
+    input::placeholder, textarea::placeholder{color:rgba(255,255,255,.3)}
+    textarea{min-height: 100px; resize: vertical}
+    input:focus, select:focus, textarea:focus{
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(249,115,22,.15);
+      background: rgba(255,255,255,.08);
+    }
+    select{cursor:pointer}
+    select option{background:var(--panel); color:var(--text)}
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 640px){ .row{grid-template-columns: 1fr} }
+
+    .inlineActions{display:flex; flex-wrap:wrap; gap:12px; margin-top: 20px; align-items:center}
+    .note{font-size:13px; color: var(--muted); margin-top: 14px}
+
+    /* Testimonials */
+    .quote{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+    .quote p{color: var(--muted); font-size: 14px; line-height:1.7; font-style:italic}
+    .who{display:flex; gap:12px; align-items:center}
+    .avatar{
+      width:38px; height:38px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border:none;
+      display:grid; place-items:center;
+      font-weight:700;
+      color: #fff;
+      font-size:14px;
+    }
+    .who strong{font-size: 14px; color:#fff}
+    .who span{font-size: 13px; color: var(--accent)}
+
+    /* Footer */
+    .footer{
+      margin-top: 40px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 24px;
+      display:flex; flex-wrap:wrap; gap:16px; justify-content:space-between; align-items:center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .fine{display:flex; gap:16px; flex-wrap:wrap}
+    .fine a{color: var(--muted); transition: color .2s ease}
+    .fine a:hover{color: var(--accent)}
+
+    /* Toast */
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%);
+      background: var(--panel);
+      border:1px solid var(--accent);
+      color: var(--text);
+      padding: 14px 20px;
+      border-radius: 999px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.5);
+      opacity: 0;
+      pointer-events:none;
+      transition: all .25s ease;
+      font-size: 14px;
+      font-weight:500;
+      z-index: 80;
+    }
+    .toast.show{opacity:1; transform: translateX(-50%) translateY(-8px)}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header aria-label="Site header">
+      <div class="nav">
+        <div class="brand" role="banner">
+          <img src="assets/logo.png" alt="BMC Athlete logo" class="logo">
+          <div>
+            <div class="name" id="brandName">BMC Athlete</div>
+            <div class="tag" id="brandTag">Personal Training • Strength • Conditioning</div>
+          </div>
+        </div>
+
+        <nav class="navlinks" aria-label="Primary navigation">
+          <a class="chip" href="#services">Servicios</a>
+          <a class="chip" href="#how">Cómo funciona</a>
+          <a class="chip" href="#results">Resultados</a>
+          <a class="chip" href="index.html" lang="en">English</a>
+          <a class="btn secondary" id="textBtn" href="#">Texto</a>
+          <a class="btn secondary" id="callBtn" href="#">Llamar</a>
+          <a class="btn primary" id="bookBtn" href="#book">Agenda sesión gratis</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="Hero">
+        <div class="card">
+          <div class="kicker">
+            <span class="dot" aria-hidden="true"></span>
+            <span><strong>Primera sesión gratis</strong> — llama o agenda para recibir tu cotización</span>
+          </div>
+
+          <h1 id="heroHeadline">Entrenamiento personal que <span>se adapta a tu vida.</span></h1>
+          <p class="sub" id="heroSub">
+            Horarios rápidos, coaching claro y progreso real. Para recibir una cotización, <strong>llama</strong> o <strong>agenda tu sesión gratis</strong> para adaptar el plan a tus metas y frecuencia semanal.
+          </p>
+
+          <div class="actions">
+            <a class="btn primary" id="heroBook" href="#book">Agenda sesión gratis</a>
+            <a class="btn secondary" id="heroCall" href="#">Llama para cotizar</a>
+            <a class="chip" href="#services">Ver servicios</a>
+          </div>
+
+          <div class="pills" aria-label="Highlights">
+            <span class="pill">Entrenamiento 1-a-1</span>
+            <span class="pill">Fuerza y acondicionamiento</span>
+            <span class="pill">Técnica y forma</span>
+            <span class="pill">Presencial y remoto</span>
+          </div>
+
+          <img src="assets/hero.png" alt="Strength training in Miami" class="hero-img">
+        </div>
+
+        <aside class="card" aria-label="Quick facts">
+          <div class="sidegrid">
+            <div class="stat">
+              <div class="ic" aria-hidden="true">✓</div>
+              <div>
+                <h3>Primera sesión gratis</h3>
+                <p>Evaluación inicial, metas y plan de acción.</p>
+              </div>
+            </div>
+            <div class="stat">
+              <div class="ic" aria-hidden="true">⏱</div>
+              <div>
+                <h3>Reserva rápida</h3>
+                <p>Solicita horario — confirma por llamada o texto.</p>
+              </div>
+            </div>
+            <div class="stat">
+              <div class="ic" aria-hidden="true">💬</div>
+              <div>
+                <h3>Cotización personalizada</h3>
+                <p>El precio depende de tus metas y la frecuencia semanal.</p>
+              </div>
+            </div>
+            <div class="stat">
+              <div class="ic" aria-hidden="true">📍</div>
+              <div>
+                <h3 id="locationTitle">Atendemos Miami-Dade</h3>
+                <p id="locationText">Miami Lakes, Hialeah, Coral Way, Brickell, Miami Beach</p>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="services" class="card" aria-label="Services">
+        <h2 class="h2">Servicios</h2>
+        <p class="lead">Elige el formato que se adapte a tu horario. Construimos el plan alrededor de ti.</p>
+
+        <div class="grid3">
+          <div class="miniCard">
+            <h3>Entrenamiento personal 1-a-1</h3>
+            <p>Sesiones privadas con técnica, seguimiento y progresión real.</p>
+          </div>
+          <div class="miniCard">
+            <h3>Fuerza y acondicionamiento</h3>
+            <p>Mejora fuerza, resistencia y confianza con un programa estructurado.</p>
+          </div>
+          <div class="miniCard">
+            <h3>Entrenamiento remoto</h3>
+            <p>Guía y seguimiento para mantenerte constante desde donde estés.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="how" class="grid2" aria-label="How it works">
+        <div class="card">
+          <h2 class="h2">Cómo funciona</h2>
+          <p class="lead">Pasos simples. Expectativas claras. Sin relleno.</p>
+          <div class="grid2">
+            <div class="miniCard">
+              <h3>1) Agenda tu sesión gratis</h3>
+              <p>Elige un horario y cuéntanos tu meta.</p>
+            </div>
+            <div class="miniCard">
+              <h3>2) Evaluación</h3>
+              <p>Revisión de movimiento, fuerza y preparación.</p>
+            </div>
+            <div class="miniCard">
+              <h3>3) Plan y cotización</h3>
+              <p>El plan depende de tus metas y frecuencia — se entrega cotización.</p>
+            </div>
+            <div class="miniCard">
+              <h3>4) Comienza a entrenar</h3>
+              <p>Seguimiento semanal y ajustes según tu progreso.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" aria-label="Why it works">
+          <h2 class="h2">Por qué funciona</h2>
+          <p class="lead">Lo mejor del coaching moderno: claridad, conveniencia y consistencia.</p>
+          <div class="grid2">
+            <div class="miniCard">
+              <h3>Programación personalizada</h3>
+              <p>No es plantilla — tu plan se adapta a tu cuerpo y horario.</p>
+            </div>
+            <div class="miniCard">
+              <h3>Coaching que se siente</h3>
+              <p>Técnica y correcciones que mejoran el movimiento de verdad.</p>
+            </div>
+            <div class="miniCard">
+              <h3>Horarios convenientes</h3>
+              <p>Confirma por llamada/texto. Integración con calendario pronto.</p>
+            </div>
+            <div class="miniCard">
+              <h3>Progreso medible</h3>
+              <p>Seguimos fuerza, resistencia y consistencia con el tiempo.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="results" class="card" aria-label="Results and testimonials">
+        <h2 class="h2">Resultados</h2>
+        <p class="lead">Agrega testimonios reales después — estos son ejemplos para mantener el diseño listo.</p>
+
+        <div class="grid3">
+          <div class="miniCard quote">
+            <p>“I started with the free session and knew immediately this was different. The plan made sense and I stayed consistent.”</p>
+            <div class="who">
+              <div class="avatar" aria-hidden="true">A</div>
+              <div>
+                <strong>Alex</strong><br/><span>Strength + confidence</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="miniCard quote">
+            <p>“Sessions were structured and efficient. The form coaching alone made me feel safer and stronger.”</p>
+            <div class="who">
+              <div class="avatar" aria-hidden="true">M</div>
+              <div>
+                <strong>Maya</strong><br/><span>Technique + mobility</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="miniCard quote">
+            <p>“Remote check-ins kept me accountable. I finally had a plan I could follow without guessing.”</p>
+            <div class="who">
+              <div class="avatar" aria-hidden="true">J</div>
+              <div>
+                <strong>Jordan</strong><br/><span>Remote coaching</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <img src="assets/mindset.png" alt="You vs You mindset" class="mindset-img">
+      </section>
+
+      <section id="book" class="card" aria-label="Booking and quote">
+        <h2 class="h2">Agenda tu sesión gratis</h2>
+        <p class="lead">
+          Para recibir una cotización, por favor <strong>llama</strong> o <strong>agenda tu sesión gratis</strong>.
+          Completa esto y preparamos la sesión.
+        </p>
+
+        <form id="leadForm" novalidate>
+          <div class="row">
+            <div>
+              <label for="name">Nombre</label>
+              <input id="name" name="name" autocomplete="name" placeholder="Tu nombre" required>
+            </div>
+            <div>
+              <label for="goal">Meta principal</label>
+              <select id="goal" name="goal" required>
+                <option value="">Elige…</option>
+                <option>Strength</option>
+                <option>Pérdida de peso</option>
+                <option>Acondicionamiento</option>
+                <option>Movilidad / movimiento</option>
+                <option>Rendimiento deportivo</option>
+                <option>Fitness general</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="phone">Teléfono</label>
+              <input id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="(555) 555-5555" required>
+            </div>
+            <div>
+              <label for="type">Tipo de sesión</label>
+              <select id="type" name="type" required>
+                <option value="">Elige…</option>
+                <option>Presencial</option>
+                <option>Remoto</option>
+                <option>No estoy seguro/a</option>
+              </select>
+            </div>
+          </div>
+
+          <label for="notes">¿Algo que debamos saber?</label>
+          <textarea id="notes" name="notes" placeholder="Lesiones, horario, historial de entrenamiento…"></textarea>
+
+          <div class="inlineActions">
+            <button class="btn primary" type="submit">Solicitar horario</button>
+            <button class="btn secondary" type="button" id="copyBtn">Copiar datos</button>
+            <a class="btn secondary" id="directCall" href="#">Llamar ahora</a>
+            <a class="btn secondary" id="directText" href="#">Enviar texto</a>
+          </div>
+
+          <p class="note" id="formNote">La integración con calendario (agenda real + sincronización) se puede conectar después. Por ahora, esto dirige a llamada/texto/email.</p>
+        </form>
+      </section>
+
+      <section class="footer" aria-label="Footer">
+        <div><span id="domain">bmcathlete.com</span> • <span id="year"></span></div>
+        <div class="fine">
+          <a href="#services">Servicios</a>
+          <a href="#how">Cómo funciona</a>
+          <a href="#book">Book</a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // =========================
+    // REUSABLE BRAND CONFIG
+    // =========================
+    const SITE = {
+      domain: "bmcathlete.com",
+      brandName: "BMC Athlete",
+      tagline: "Entrenamiento Personal • Fuerza • Acondicionamiento",
+      phoneDisplay: "(555) 555-5555",
+      phoneE164: "+15555555555",
+      smsE164: "+15555555555",
+      email: "train@bmcathlete.com",
+      locationTitle: "Atendemos Miami-Dade",
+      locationText: "Miami Lakes, Hialeah, Coral Way, Brickell, Miami Beach",
+      heroHeadline: "Entrenamiento personal que se adapta a tu vida.",
+      heroSub:
+        "Horarios rápidos, coaching claro y progreso real. Para recibir una cotización, llama o agenda tu sesión gratis para adaptar el plan a tus metas y frecuencia semanal.",
+      bookingUrl: "" // add later (Calendly/Acuity/Google Appointment Schedules/etc.)
+    };
+
+    // ===== helpers
+    const $ = (id) => document.getElementById(id);
+    const toast = (msg) => {
+      const t = $("toast");
+      t.textContent = msg;
+      t.classList.add("show");
+      clearTimeout(toast._tm);
+      toast._tm = setTimeout(() => t.classList.remove("show"), 2400);
+    };
+
+    function digitsOnlyPhone(s){ return (s || "").replace(/[^\d+]/g, ""); }
+
+    function setText(){
+      $("brandName").textContent = SITE.brandName;
+      $("brandTag").textContent = SITE.tagline;
+      $("heroHeadline").textContent = SITE.heroHeadline;
+      $("heroSub").textContent = SITE.heroSub;
+      $("locationTitle").textContent = SITE.locationTitle;
+      $("locationText").textContent = SITE.locationText;
+      $("domain").textContent = SITE.domain;
+      $("year").textContent = new Date().getFullYear();
+      document.title = `Entrenamiento Personal en Miami | ${SITE.brandName}`;
+    }
+
+    function setLinks(){
+      const tel = `tel:${SITE.phoneE164}`;
+      const sms = `sms:${SITE.smsE164}`;
+      $("callBtn").href = tel;
+      $("heroCall").href = tel;
+      $("directCall").href = tel;
+      $("textBtn").href = sms;
+      $("directText").href = sms;
+
+      if (SITE.bookingUrl && SITE.bookingUrl.trim()){
+        $("bookBtn").href = SITE.bookingUrl;
+        $("heroBook").href = SITE.bookingUrl;
+        $("bookBtn").target = "_blank";
+        $("heroBook").target = "_blank";
+        $("bookBtn").rel = "noopener";
+        $("heroBook").rel = "noopener";
+      }
+    }
+
+    function getFormData(){
+      return {
+        name: $("name").value.trim(),
+        phone: $("phone").value.trim(),
+        goal: $("goal").value,
+        type: $("type").value,
+        notes: $("notes").value.trim()
+      };
+    }
+
+    function validate(data){
+      const errs = [];
+      if (!data.name) errs.push("El nombre es obligatorio.");
+      if (!data.goal) errs.push("La meta es obligatoria.");
+      if (!data.type) errs.push("El tipo de sesión es obligatorio.");
+      if (!data.phone) errs.push("El teléfono es obligatorio.");
+      const raw = digitsOnlyPhone(data.phone);
+      const digits = raw.replace(/[^\d]/g,"");
+      if (data.phone && digits.length < 10) errs.push("El número de teléfono parece muy corto.");
+      return errs;
+    }
+
+    function buildMailto(data){
+      const subject = encodeURIComponent(`Free first session request — ${SITE.brandName}`);
+      const lines = [
+        `Name: ${data.name}`,
+        `Phone: ${data.phone}`,
+        `Goal: ${data.goal}`,
+        `Session type: ${data.type}`,
+        `Notes: ${data.notes || "(none)"}`,
+        "",
+        `Requested via: ${SITE.domain}`,
+        "Reminder: Quote is provided by phone or during the free first session."
+      ];
+      const body = encodeURIComponent(lines.join("\n"));
+      return `mailto:${encodeURIComponent(SITE.email)}?subject=${subject}&body=${body}`;
+    }
+
+    function buildSms(data){
+      const msg = [
+        `Hola ${SITE.brandName}! Quiero agendar mi sesión gratis.`,
+        `Name: ${data.name}`,
+        `Goal: ${data.goal}`,
+        `Phone: ${data.phone}`,
+        `Type: ${data.type}`,
+        data.notes ? `Notes: ${data.notes}` : ""
+      ].filter(Boolean).join(" | ");
+      const body = encodeURIComponent(msg);
+      return `sms:${SITE.smsE164}?&body=${body}`;
+    }
+
+    // boot
+    setText();
+    setLinks();
+
+    // Form submit:
+    // - If bookingUrl exists: open it
+    // - Else: open SMS, fallback to email
+    $("leadForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const data = getFormData();
+      const errs = validate(data);
+      if (errs.length){ toast(errs[0]); return; }
+
+      if (SITE.bookingUrl && SITE.bookingUrl.trim()){
+        toast("Abriendo agenda…");
+        window.open(SITE.bookingUrl, "_blank", "noopener");
+        return;
+      }
+
+      try{
+        toast("Abriendo mensaje de texto…");
+        window.location.href = buildSms(data);
+        setTimeout(() => {
+          toast("Si no se abrió el texto, cambiando a email…");
+          window.location.href = buildMailto(data);
+        }, 700);
+      }catch(err){
+        window.location.href = buildMailto(data);
+      }
+    });
+
+    $("copyBtn").addEventListener("click", async () => {
+      const data = getFormData();
+      const errs = validate(data);
+      if (errs.length){ toast(errs[0]); return; }
+
+      const text = [
+        `Free first session request — ${SITE.brandName}`,
+        `Name: ${data.name}`,
+        `Phone: ${data.phone}`,
+        `Goal: ${data.goal}`,
+        `Type: ${data.type}`,
+        `Notes: ${data.notes || "(none)"}`
+      ].join("\n");
+
+      try{
+        await navigator.clipboard.writeText(text);
+        toast("Copiado.");
+      }catch(e){
+        toast("El navegador bloqueó la copia.");
+      }
+    });
+  </script>
+</body>
+</html>

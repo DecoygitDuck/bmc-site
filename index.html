@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>bmcathlete.com | Personal Training</title>
+  <meta name="description" content="BMC Athlete — Personal training built around strength, discipline, and performance. First session free. Call or book to receive a quote." />
+<link rel="alternate" hreflang="en" href="https://bmcathlete.com/" />
+  <link rel="alternate" hreflang="es" href="https://bmcathlete.com/es.html" />
+
+  <style>
+    :root{
+  /* Dark fitness lifestyle palette */
+  --bg:#0f0f0f;
+  --bg2:#141414;
+  --panel:#1a1a1a;
+  --panel2:#222222;
+
+  --text:#f5f5f5;
+  --muted:#a3a3a3;
+  --border:rgba(255,255,255,.08);
+  --shadow:0 20px 50px rgba(0,0,0,.5);
+
+  /* Warm, inviting accent system */
+  --accent:#f97316;   /* warm coral orange - energetic but welcoming */
+  --accent2:#fb923c;  /* lighter orange for hover states */
+  --accent3:#22c55e;  /* fresh green - health/vitality */
+
+  --r12:12px;
+  --r16:16px;
+  --r22:22px;
+
+  --max:1120px;
+  --pad:20px;
+  --font: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+    *{box-sizing:border-box; margin:0; padding:0}
+    html,body{height:100%}
+    body{
+      font-family:var(--font);
+      color:var(--text);
+      line-height:1.6;
+      background: var(--bg);
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(249,115,22,.15), transparent),
+        radial-gradient(ellipse 60% 40% at 100% 50%, rgba(34,197,94,.05), transparent);
+      overflow-x:hidden;
+      min-height:100vh;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding: 18px var(--pad) 70px}
+    .sr{position:absolute; left:-9999px}
+
+    /* Header */
+    header{
+      position: sticky;
+      top: 16px;
+      z-index: 50;
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding: 14px 20px;
+      border:1px solid var(--border);
+      border-radius: var(--r22);
+      background: rgba(20,20,20,.85);
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow);
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width: 220px;
+    }
+    .logo{
+      width:50px;
+      height:50px;
+      object-fit:contain;
+      border-radius:12px;
+      display:block;
+    }
+
+    .hero-img{
+      width:100%;
+      max-width:480px;
+      margin-top:28px;
+      border-radius:16px;
+      box-shadow: 0 25px 80px rgba(249,115,22,.25), 0 10px 40px rgba(0,0,0,.5);
+    }
+
+    .mindset-img{
+      width:100%;
+      max-width:420px;
+      margin:32px auto 0;
+      display:block;
+      border-radius:16px;
+      box-shadow: 0 25px 80px rgba(249,115,22,.2), 0 10px 40px rgba(0,0,0,.5);
+    }
+
+    .mark{
+      width:42px; height:42px; border-radius:14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border:2px solid rgba(255,255,255,.15);
+      box-shadow: 0 8px 24px rgba(249,115,22,.4);
+    }
+    .brand .name{font-weight:800; letter-spacing:.5px; font-size: 16px; color: #fff}
+    .brand .tag{font-size: 12px; color: var(--accent); margin-top:3px; font-weight:500}
+
+    .navlinks{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .chip{
+      font-size:13px;
+      font-weight:500;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.05);
+      transition: all .2s ease;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .chip:hover{transform:translateY(-2px); background:rgba(249,115,22,.15); border-color:var(--accent); color:var(--accent)}
+
+    .btn{
+      font-size:14px;
+      font-weight:600;
+      padding: 12px 20px;
+      border-radius: 999px;
+      border: none;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      justify-content:center;
+      white-space:nowrap;
+      user-select:none;
+      cursor:pointer;
+      transition: all .2s ease;
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color:#fff;
+      box-shadow: 0 8px 30px rgba(249,115,22,.4);
+    }
+    .btn.primary:hover{transform:translateY(-2px) scale(1.02); box-shadow: 0 12px 40px rgba(249,115,22,.5)}
+    .btn.secondary{
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      color: var(--text);
+    }
+    .btn.secondary:hover{transform:translateY(-2px); background: rgba(255,255,255,.12); border-color:var(--accent)}
+
+    /* Cards */
+    .card{
+      border:1px solid rgba(255,255,255,.06);
+      background: var(--panel);
+      border-radius: var(--r22);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card:before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(ellipse 60% 40% at 0% 0%, rgba(249,115,22,.08), transparent),
+        radial-gradient(ellipse 50% 50% at 100% 100%, rgba(34,197,94,.04), transparent);
+      pointer-events:none;
+    }
+    .card > *{position:relative}
+
+    /* Hero */
+    .hero{
+      margin-top: 24px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 20px;
+      align-items:stretch;
+    }
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      border:1px solid rgba(249,115,22,.3);
+      background: rgba(249,115,22,.1);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 13px;
+      color: var(--accent);
+      font-weight:500;
+    }
+    .dot{width:10px; height:10px; border-radius: 999px; background: var(--accent3); box-shadow: 0 0 0 4px rgba(34,197,94,.2); animation: pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+    h1{
+      margin: 16px 0 12px;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      line-height: 1.1;
+      letter-spacing: -1px;
+      font-weight:800;
+    }
+    h1 span{color:var(--accent)}
+    .sub{
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 60ch;
+      line-height:1.7;
+    }
+    .actions{
+      margin-top: 20px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+    }
+    .pills{
+      margin-top: 20px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      color: var(--muted);
+      font-size:13px;
+    }
+    .pill{
+      border:1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.04);
+      padding: 10px 14px;
+      border-radius: 999px;
+      transition: all .2s ease;
+    }
+    .pill:hover{border-color:var(--accent); color:var(--accent)}
+
+    .sidegrid{display:grid; gap:14px}
+    .stat{
+      display:flex; gap:14px; align-items:flex-start;
+      padding: 16px;
+      border-radius: var(--r16);
+      border:1px solid rgba(255,255,255,.06);
+      background: rgba(255,255,255,.02);
+      transition: all .2s ease;
+    }
+    .stat:hover{border-color:rgba(249,115,22,.2); background:rgba(249,115,22,.05)}
+    .ic{
+      width:40px; height:40px; border-radius: 12px;
+      background: linear-gradient(135deg, rgba(249,115,22,.2), rgba(249,115,22,.1));
+      border:1px solid rgba(249,115,22,.3);
+      display:grid; place-items:center;
+      font-weight:900;
+      font-size:16px;
+      flex-shrink:0;
+    }
+    .stat h3{margin:0; font-size: 14px; font-weight:600; color:#fff}
+    .stat p{margin:5px 0 0; font-size:13px; color: var(--muted); line-height:1.5}
+
+    /* Sections */
+    section{margin-top: 24px}
+    .h2{font-size: 22px; font-weight:700; letter-spacing: -.3px; margin: 0 0 8px; color:#fff}
+    .lead{color: var(--muted); margin: 0 0 20px; font-size:15px}
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .grid2{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 940px){
+      header{position:relative; top:auto}
+      .hero{grid-template-columns: 1fr}
+      .grid3{grid-template-columns: 1fr}
+      .grid2{grid-template-columns: 1fr}
+      .brand{min-width:auto}
+      .hero-img, .mindset-img{max-width:100%}
+    }
+    @media (max-width: 640px){
+      .wrap{padding: 12px 16px 60px}
+      .nav{padding: 10px 14px; gap:10px; flex-wrap:wrap}
+      .navlinks{width:100%; justify-content:center; gap:8px}
+      .chip{padding:8px 12px; font-size:12px}
+      .btn{padding:10px 16px; font-size:13px}
+      .brand{width:100%; justify-content:center; min-width:auto}
+      .card{padding:20px}
+      h1{font-size:clamp(1.8rem, 6vw, 2.4rem)}
+      .sub{font-size:1rem}
+      .kicker{font-size:11px; padding:8px 12px}
+      .pills{gap:6px}
+      .pill{padding:8px 10px; font-size:11px}
+      .actions{gap:8px}
+      .stat{padding:12px}
+      .miniCard{padding:16px}
+      .h2{font-size:18px}
+      .lead{font-size:14px}
+    }
+
+    .miniCard{
+      border:1px solid rgba(255,255,255,.06);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--r16);
+      padding: 20px;
+      transition: all .2s ease;
+    }
+    .miniCard:hover{border-color:rgba(249,115,22,.2); background:rgba(249,115,22,.05); transform:translateY(-2px)}
+    .miniCard h3{font-size: 15px; font-weight:600; margin: 0 0 8px; color:#fff}
+    .miniCard p{color: var(--muted); font-size: 14px; margin: 0; line-height:1.6}
+
+    /* Form */
+    label{display:block; font-size:13px; font-weight:500; color: var(--muted); margin: 14px 0 8px}
+    input, select, textarea{
+      width:100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      font-size:15px;
+      outline:none;
+      transition: all .2s ease;
+    }
+    input::placeholder, textarea::placeholder{color:rgba(255,255,255,.3)}
+    textarea{min-height: 100px; resize: vertical}
+    input:focus, select:focus, textarea:focus{
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(249,115,22,.15);
+      background: rgba(255,255,255,.08);
+    }
+    select{cursor:pointer}
+    select option{background:var(--panel); color:var(--text)}
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 640px){ .row{grid-template-columns: 1fr} }
+
+    .inlineActions{display:flex; flex-wrap:wrap; gap:12px; margin-top: 20px; align-items:center}
+    .note{font-size:13px; color: var(--muted); margin-top: 14px}
+
+    /* Testimonials */
+    .quote{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+    .quote p{color: var(--muted); font-size: 14px; line-height:1.7; font-style:italic}
+    .who{display:flex; gap:12px; align-items:center}
+    .avatar{
+      width:38px; height:38px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border:none;
+      display:grid; place-items:center;
+      font-weight:700;
+      color: #fff;
+      font-size:14px;
+    }
+    .who strong{font-size: 14px; color:#fff}
+    .who span{font-size: 13px; color: var(--accent)}
+
+    /* Footer */
+    .footer{
+      margin-top: 40px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 24px;
+      display:flex; flex-wrap:wrap; gap:16px; justify-content:space-between; align-items:center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .fine{display:flex; gap:16px; flex-wrap:wrap}
+    .fine a{color: var(--muted); transition: color .2s ease}
+    .fine a:hover{color: var(--accent)}
+
+    /* Toast */
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%);
+      background: var(--panel);
+      border:1px solid var(--accent);
+      color: var(--text);
+      padding: 14px 20px;
+      border-radius: 999px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.5);
+      opacity: 0;
+      pointer-events:none;
+      transition: all .25s ease;
+      font-size: 14px;
+      font-weight:500;
+      z-index: 80;
+    }
+    .toast.show{opacity:1; transform: translateX(-50%) translateY(-8px)}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header aria-label="Site header">
+      <div class="nav">
+        <div class="brand" role="banner">
+          <img src="assets/logo.png" alt="BMC Athlete logo" class="logo">
+          <div>
+            <div class="name" id="brandName">BMC Athlete</div>
+            <div class="tag" id="brandTag">Personal Training • Strength • Conditioning</div>
+          </div>
+        </div>
+
+        <nav class="navlinks" aria-label="Primary navigation">
+          <a class="chip" href="#services">Services</a>
+          <a class="chip" href="#how">How it works</a>
+          <a class="chip" href="#results">Results</a>
+          <a class="chip" href="es.html" lang="es">Español</a>
+          <a class="btn secondary" id="textBtn" href="#">Text</a>
+          <a class="btn secondary" id="callBtn" href="#">Call</a>
+          <a class="btn primary" id="bookBtn" href="#book">Book free session</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="Hero">
+        <div class="card">
+          <div class="kicker">
+            <span class="dot" aria-hidden="true"></span>
+            <span><strong>First session free</strong> — call or book to receive a quote</span>
+          </div>
+
+          <h1 id="heroHeadline">Personal training that <span>fits your life.</span></h1>
+          <p class="sub" id="heroSub">
+            Fast scheduling, clear coaching, real progress. To get a quote, <strong>call</strong> or <strong>book your free first session</strong> so we can tailor a plan to your goals and frequency.
+          </p>
+
+          <div class="actions">
+            <a class="btn primary" id="heroBook" href="#book">Book free session</a>
+            <a class="btn secondary" id="heroCall" href="#">Call for a quote</a>
+            <a class="chip" href="#services">See services</a>
+          </div>
+
+          <div class="pills" aria-label="Highlights">
+            <span class="pill">1:1 Coaching</span>
+            <span class="pill">Strength + Conditioning</span>
+            <span class="pill">Form & Technique</span>
+            <span class="pill">In-person + Remote</span>
+          </div>
+
+          <img src="assets/hero.png" alt="Strength training in Miami" class="hero-img">
+        </div>
+
+        <aside class="card" aria-label="Quick facts">
+          <div class="sidegrid">
+            <div class="stat">
+              <div class="ic" aria-hidden="true">✓</div>
+              <div>
+                <h3>Free first session</h3>
+                <p>Assessment + goal mapping + next-step plan.</p>
+              </div>
+            </div>
+            <div class="stat">
+              <div class="ic" aria-hidden="true">⏱</div>
+              <div>
+                <h3>Fast booking</h3>
+                <p>Request a time — confirm by call/text.</p>
+              </div>
+            </div>
+            <div class="stat">
+              <div class="ic" aria-hidden="true">💬</div>
+              <div>
+                <h3>Quote by call or session</h3>
+                <p>Pricing depends on goals + weekly frequency.</p>
+              </div>
+            </div>
+            <div class="stat">
+              <div class="ic" aria-hidden="true">📍</div>
+              <div>
+                <h3 id="locationTitle">Serving Miami-Dade</h3>
+                <p id="locationText">Miami Lakes, Hialeah, Coral Way, Brickell, Miami Beach</p>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="services" class="card" aria-label="Services">
+        <h2 class="h2">Services</h2>
+        <p class="lead">Choose the format that matches your schedule. We’ll build the plan around you.</p>
+
+        <div class="grid3">
+          <div class="miniCard">
+            <h3>1:1 Personal Training</h3>
+            <p>Customized sessions with accountability, form coaching, and progression.</p>
+          </div>
+          <div class="miniCard">
+            <h3>Strength + Conditioning</h3>
+            <p>Build power, endurance, and confidence with a structured program.</p>
+          </div>
+          <div class="miniCard">
+            <h3>Remote Coaching</h3>
+            <p>Training guidance + check-ins for consistency from anywhere.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="how" class="grid2" aria-label="How it works">
+        <div class="card">
+          <h2 class="h2">How it works</h2>
+          <p class="lead">Simple steps. Clear expectations. No fluff.</p>
+          <div class="grid2">
+            <div class="miniCard">
+              <h3>1) Book the free session</h3>
+              <p>Pick a time and tell us your goal.</p>
+            </div>
+            <div class="miniCard">
+              <h3>2) Assessment</h3>
+              <p>Movement, strength, and readiness check.</p>
+            </div>
+            <div class="miniCard">
+              <h3>3) Plan + quote</h3>
+              <p>Plan depends on goals + frequency — quote provided.</p>
+            </div>
+            <div class="miniCard">
+              <h3>4) Start training</h3>
+              <p>Progress tracked weekly. Adjustments as you improve.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" aria-label="Why it works">
+          <h2 class="h2">Why it works</h2>
+          <p class="lead">Borrowing the best parts of modern coaching: clarity, convenience, and consistency.</p>
+          <div class="grid2">
+            <div class="miniCard">
+              <h3>Personalized programming</h3>
+              <p>Not a template — your plan matches your body and schedule.</p>
+            </div>
+            <div class="miniCard">
+              <h3>Coaching you can feel</h3>
+              <p>Technique + cues that actually change the movement.</p>
+            </div>
+            <div class="miniCard">
+              <h3>Convenient scheduling</h3>
+              <p>Call/text to confirm. Calendar sync coming next.</p>
+            </div>
+            <div class="miniCard">
+              <h3>Measurable progress</h3>
+              <p>Strength, endurance, and consistency tracked over time.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="results" class="card" aria-label="Results and testimonials">
+        <h2 class="h2">Results</h2>
+        <p class="lead">Add real testimonials later — these are placeholders to keep the layout ready.</p>
+
+        <div class="grid3">
+          <div class="miniCard quote">
+            <p>“I started with the free session and knew immediately this was different. The plan made sense and I stayed consistent.”</p>
+            <div class="who">
+              <div class="avatar" aria-hidden="true">A</div>
+              <div>
+                <strong>Alex</strong><br/><span>Strength + confidence</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="miniCard quote">
+            <p>“Sessions were structured and efficient. The form coaching alone made me feel safer and stronger.”</p>
+            <div class="who">
+              <div class="avatar" aria-hidden="true">M</div>
+              <div>
+                <strong>Maya</strong><br/><span>Technique + mobility</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="miniCard quote">
+            <p>“Remote check-ins kept me accountable. I finally had a plan I could follow without guessing.”</p>
+            <div class="who">
+              <div class="avatar" aria-hidden="true">J</div>
+              <div>
+                <strong>Jordan</strong><br/><span>Remote coaching</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <img src="assets/mindset.png" alt="You vs You mindset" class="mindset-img">
+      </section>
+
+      <section id="book" class="card" aria-label="Booking and quote">
+        <h2 class="h2">Book your free first session</h2>
+        <p class="lead">
+          To receive a quote, please <strong>call</strong> or <strong>book your free first session</strong>.
+          Fill this out and we’ll prep the session.
+        </p>
+
+        <form id="leadForm" novalidate>
+          <div class="row">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" autocomplete="name" placeholder="Your name" required>
+            </div>
+            <div>
+              <label for="goal">Primary goal</label>
+              <select id="goal" name="goal" required>
+                <option value="">Select…</option>
+                <option>Strength</option>
+                <option>Weight loss</option>
+                <option>Conditioning</option>
+                <option>Mobility / movement</option>
+                <option>Athletic performance</option>
+                <option>General fitness</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="(555) 555-5555" required>
+            </div>
+            <div>
+              <label for="type">Session type</label>
+              <select id="type" name="type" required>
+                <option value="">Select…</option>
+                <option>In-person</option>
+                <option>Remote</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+          </div>
+
+          <label for="notes">Anything we should know?</label>
+          <textarea id="notes" name="notes" placeholder="Injuries, schedule, training history…"></textarea>
+
+          <div class="inlineActions">
+            <button class="btn primary" type="submit">Request booking</button>
+            <button class="btn secondary" type="button" id="copyBtn">Copy details</button>
+            <a class="btn secondary" id="directCall" href="#">Call now</a>
+            <a class="btn secondary" id="directText" href="#">Text now</a>
+          </div>
+
+          <p class="note" id="formNote">Calendar integration (real booking + sync) can be connected next. For now, this routes to call/text/email.</p>
+        </form>
+      </section>
+
+      <section class="footer" aria-label="Footer">
+        <div><span id="domain">bmcathlete.com</span> • <span id="year"></span></div>
+        <div class="fine">
+          <a href="#services">Services</a>
+          <a href="#how">How it works</a>
+          <a href="#book">Book</a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // =========================
+    // REUSABLE BRAND CONFIG
+    // =========================
+    const SITE = {
+      domain: "bmcathlete.com",
+      brandName: "BMC Athlete",
+      tagline: "Personal Training • Strength • Conditioning",
+      phoneDisplay: "(555) 555-5555",
+      phoneE164: "+15555555555",
+      smsE164: "+15555555555",
+      email: "train@bmcathlete.com",
+      locationTitle: "Serving Miami-Dade",
+      locationText: "Miami Lakes, Hialeah, Coral Way, Brickell, Miami Beach",
+      heroHeadline: "Personal training that fits your life.",
+      heroSub:
+        "Fast scheduling, clear coaching, real progress. To get a quote, call or book your free first session so we can tailor a plan to your goals and frequency.",
+      bookingUrl: "" // add later (Calendly/Acuity/Google Appointment Schedules/etc.)
+    };
+
+    // ===== helpers
+    const $ = (id) => document.getElementById(id);
+    const toast = (msg) => {
+      const t = $("toast");
+      t.textContent = msg;
+      t.classList.add("show");
+      clearTimeout(toast._tm);
+      toast._tm = setTimeout(() => t.classList.remove("show"), 2400);
+    };
+
+    function digitsOnlyPhone(s){ return (s || "").replace(/[^\d+]/g, ""); }
+
+    function setText(){
+      $("brandName").textContent = SITE.brandName;
+      $("brandTag").textContent = SITE.tagline;
+      $("heroHeadline").textContent = SITE.heroHeadline;
+      $("heroSub").textContent = SITE.heroSub;
+      $("locationTitle").textContent = SITE.locationTitle;
+      $("locationText").textContent = SITE.locationText;
+      $("domain").textContent = SITE.domain;
+      $("year").textContent = new Date().getFullYear();
+      document.title = `${SITE.domain} | Personal Training`;
+    }
+
+    function setLinks(){
+      const tel = `tel:${SITE.phoneE164}`;
+      const sms = `sms:${SITE.smsE164}`;
+      $("callBtn").href = tel;
+      $("heroCall").href = tel;
+      $("directCall").href = tel;
+      $("textBtn").href = sms;
+      $("directText").href = sms;
+
+      if (SITE.bookingUrl && SITE.bookingUrl.trim()){
+        $("bookBtn").href = SITE.bookingUrl;
+        $("heroBook").href = SITE.bookingUrl;
+        $("bookBtn").target = "_blank";
+        $("heroBook").target = "_blank";
+        $("bookBtn").rel = "noopener";
+        $("heroBook").rel = "noopener";
+      }
+    }
+
+    function getFormData(){
+      return {
+        name: $("name").value.trim(),
+        phone: $("phone").value.trim(),
+        goal: $("goal").value,
+        type: $("type").value,
+        notes: $("notes").value.trim()
+      };
+    }
+
+    function validate(data){
+      const errs = [];
+      if (!data.name) errs.push("Name is required.");
+      if (!data.goal) errs.push("Goal is required.");
+      if (!data.type) errs.push("Session type is required.");
+      if (!data.phone) errs.push("Phone is required.");
+      const raw = digitsOnlyPhone(data.phone);
+      const digits = raw.replace(/[^\d]/g,"");
+      if (data.phone && digits.length < 10) errs.push("Phone number looks too short.");
+      return errs;
+    }
+
+    function buildMailto(data){
+      const subject = encodeURIComponent(`Free first session request — ${SITE.brandName}`);
+      const lines = [
+        `Name: ${data.name}`,
+        `Phone: ${data.phone}`,
+        `Goal: ${data.goal}`,
+        `Session type: ${data.type}`,
+        `Notes: ${data.notes || "(none)"}`,
+        "",
+        `Requested via: ${SITE.domain}`,
+        "Reminder: Quote is provided by phone or during the free first session."
+      ];
+      const body = encodeURIComponent(lines.join("\n"));
+      return `mailto:${encodeURIComponent(SITE.email)}?subject=${subject}&body=${body}`;
+    }
+
+    function buildSms(data){
+      const msg = [
+        `Hi ${SITE.brandName}! I'd like to book my free first session.`,
+        `Name: ${data.name}`,
+        `Goal: ${data.goal}`,
+        `Phone: ${data.phone}`,
+        `Type: ${data.type}`,
+        data.notes ? `Notes: ${data.notes}` : ""
+      ].filter(Boolean).join(" | ");
+      const body = encodeURIComponent(msg);
+      return `sms:${SITE.smsE164}?&body=${body}`;
+    }
+
+    // boot
+    setText();
+    setLinks();
+
+    // Form submit:
+    // - If bookingUrl exists: open it
+    // - Else: open SMS, fallback to email
+    $("leadForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const data = getFormData();
+      const errs = validate(data);
+      if (errs.length){ toast(errs[0]); return; }
+
+      if (SITE.bookingUrl && SITE.bookingUrl.trim()){
+        toast("Opening booking…");
+        window.open(SITE.bookingUrl, "_blank", "noopener");
+        return;
+      }
+
+      try{
+        toast("Opening text message…");
+        window.location.href = buildSms(data);
+        setTimeout(() => {
+          toast("If texting didn’t open, switching to email…");
+          window.location.href = buildMailto(data);
+        }, 700);
+      }catch(err){
+        window.location.href = buildMailto(data);
+      }
+    });
+
+    $("copyBtn").addEventListener("click", async () => {
+      const data = getFormData();
+      const errs = validate(data);
+      if (errs.length){ toast(errs[0]); return; }
+
+      const text = [
+        `Free first session request — ${SITE.brandName}`,
+        `Name: ${data.name}`,
+        `Phone: ${data.phone}`,
+        `Goal: ${data.goal}`,
+        `Type: ${data.type}`,
+        `Notes: ${data.notes || "(none)"}`
+      ].join("\n");
+
+      try{
+        await navigator.clipboard.writeText(text);
+        toast("Copied.");
+      }catch(e){
+        toast("Copy blocked by browser.");
+      }
+    });
+  </script>
+</body>
+</html>
